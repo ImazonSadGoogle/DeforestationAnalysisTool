@@ -236,6 +236,7 @@ $(function() {
     				layers = layers.slice(layers.indexOf(",")+1);
     				var flag = layers.slice(layers.indexOf("\"")+1,layers.indexOf("\","));
     				layers = layers.slice(layers.indexOf(",")+1);
+    				console.log(layer+" --> "+flag);
     				var lay = this.map.layers.get_by_name(layer);
     				if(lay) {
 				    	if(flag==='true'){
@@ -370,7 +371,7 @@ $(function() {
         	 * 
         	 */ 
         	var arraylayer = new Array("Brazil Legal Amazon","Brazil Municipalities Public","Brazil States Public","Brazil Federal Conservation Unit Public",
-        			"Brazil State Conservation Unit Public","LANDSAT/L7_L1T","SMA","RGB","NDFI t0","NDFI t1","NDFI analysis","True color RGB141","False color RGB421",
+        			"Brazil State Conservation Unit Public","LANDSAT/L7_L1T","SMA","RGB","NDFI T0","NDFI T1","NDFI analysis","True color RGB141","False color RGB421",
         			"F color infrared RGB214","Validated polygons");
         	var save_status_layer="";
         	for(var num=0; num<arraylayer.length;num++){
@@ -402,7 +403,6 @@ $(function() {
         
         compare_view: function(compare_type) {
             var self = this;
-            var compare_type_view = compare_type;
             this.map.close_layer_editor();
             if(compare_type !== 'one') {
                 
@@ -519,11 +519,13 @@ $(function() {
         },
 
         go_back: function() {  
-        	//alert(this.status_layer_map(this.map)); 
-        	console.log(this.compare_type_view);
-        	this.status_layer_map_save(this.compare_type_view);
-        	//this.status_layer_map_save('two');
-        	//this.get_status_layer_map('one');
+        	if(this.compare_maps.length===0){
+        		this.status_layer_map_save("one");
+        	}else if(this.compare_maps.length===1){
+        		this.status_layer_map_save("two");
+        	}else if(this.compare_maps.length===3){
+        		this.status_layer_map_save("four");
+        	}        	
             var p = this.gridstack.current_cell.parent_cell();
             this.to_cell(p.get('z'), p.get('x'), p.get('y'));
             router.navigate('cell/' +  p.get('z') + "/" + p.get('x') + "/" + p.get('y'));
