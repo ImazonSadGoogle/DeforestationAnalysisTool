@@ -368,7 +368,7 @@ $(function() {
         	 * id{?} name{True color RGB141}
         	 * id{?} name{False color RGB421}
         	 * id{?} name{F color infrared RGB214}
-        	 * 
+        	 *  
         	 */ 
         	var arraylayer = new Array("Brazil Legal Amazon","Brazil Municipalities Public","Brazil States Public","Brazil Federal Conservation Unit Public",
         			"Brazil State Conservation Unit Public","LANDSAT/L7_L1T","SMA","RGB","NDFI T0","NDFI T1","NDFI analysis","True color RGB141","False color RGB421",
